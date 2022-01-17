@@ -9,7 +9,7 @@ namespace VendingMachineController.Tests.Model
     public class VendingMachineTests
     {
         [Fact]
-        public void Test1()
+        public void End()
         {
 
         }

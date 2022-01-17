@@ -4,14 +4,13 @@ using System.Text;
 
 namespace VendingMachineController.Model
 {
-    //class Product is parent Children Drink, Food, Toy 
+    //class Product is parent. Children: Drink, Food, Toy 
     public class Drink: Product
     {
-        public string Carbonated { get; set; }
+        public bool Carbonated { get; set; }
 
-        // T ex (serial number 1 , 12, "Pripps", "Open can -> drink it", "it is carbonated")
         // T ex (serial number 2, 11, "Önos saft", "open bottle -> drink it", "not carbonated")
-        public Drink(int id, int prize, string productTypeName, string howTooUse, string carbonated) : 
+        public Drink(int id, int prize, string productTypeName, string howTooUse, bool carbonated) : 
                                     base(id, prize, productTypeName, howTooUse)
         {
             this.Carbonated = carbonated;
@@ -20,12 +19,13 @@ namespace VendingMachineController.Model
         // Examine, to show the product’s price and info
         public override string Examine()
         {
-            return ($"Prize {Prize} sek.\r\n" + Use());
+            string carbText = Carbonated ? "is carbonated" : "not carbonated";
+            return ($"Product name: {TypeName}, Prize: {Prize} sek, Drink Type: {carbText}.\r\n");
         }
 
         public override string Use()
         {
-            return ($"How to use {TypeName}: {TextHowToUse}." );
+            return ($"How to use {TypeName}: {TextHowToUse}.\n" );
         }
     }
 }
